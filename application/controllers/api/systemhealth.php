@@ -20,12 +20,15 @@ class Systemhealth extends REST_Controller {
      *
      * @return Response
     */
-	public function index_get($id = 0)
+	public function index_get($id = 0, $date = null)
 	{
         if(!empty($id)){
-            $data = $this->db->get_where("items", ['id' => $id])->row_array();
+            $data = $this->db->get_where($this->table, ['id' => $id])->row_array();
+        }else if($date){
+          $this->db->where('CreatedAt =', $date);
+          $data = $this->db->get($this->table)->result();
         }else{
-            $data = $this->db->get("items")->result();
+            $data = $this->db->get($this->table)->result();
         }
 
         $this->response($data, REST_Controller::HTTP_OK);
