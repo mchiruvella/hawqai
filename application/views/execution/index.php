@@ -42,24 +42,38 @@
                   <div class="form-group row">
                        <label class="col-sm-3 col-form-label">Testing Type</label>
                        <select class="form-control col-sm-9">
-                           <option>Web</option>
-                           <option>2</option>
-                           <option>3</option>
-                           <option>4</option>
-                           <option>5</option>
+                           <option>Build smoke testing</option>
+                           <option>System regression testing</option>
+                           <option>System integration testing</option>
                        </select>
                    </div>
 
+
                    <div class="form-group row">
-                        <label class="col-sm-3 col-form-label">Browser</label>
-                        <select class="form-control col-sm-9">
-                            <option>Chrome</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                        </select>
+                        <label class="col-sm-3 col-form-label">Device Type</label>
+                        <div class="col-sm-9">
+                          <input type="radio" name="device" value="web" checked/> Web
+                          <input type="radio" name="device" value="mobile"/>Mobile
+                      </div>
                     </div>
+
+                    <div class="form-group row" id="web">
+                         <label class="col-sm-3 col-form-label">Devices</label>
+                         <select class="form-control col-sm-9">
+                             <option>Chrome</option>
+                             <option>Firefox</option>
+                             <option>Safari</option>
+                         </select>
+                     </div>
+
+                     <div class="form-group row" id="mobile">
+                          <label class="col-sm-3 col-form-label">Testing Type</label>
+                          <select class="form-control col-sm-9">
+                              <option>Iphone 11</option>
+                              <option>Samsung</option>
+                              <option>Ipad</option>
+                          </select>
+                      </div>
 
                     <div class="form-group row">
                         <label class="col-sm-3 col-form-label">Emails</label>
@@ -116,28 +130,32 @@
                                        <option>5</option>
                                    </select>
                                </div>
-
                                <div class="form-group row">
-                                    <label class="col-sm-3 col-form-label">Testing Type</label>
-                                    <select class="form-control col-sm-9">
-                                        <option>Web</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
-                                        <option>5</option>
-                                    </select>
+                                    <label class="col-sm-3 col-form-label">Device Type</label>
+                                    <div class="col-sm-9">
+                                      <input type="radio" name="device" value="web" checked/> Web
+                                      <input type="radio" name="device" value="mobile"/>Mobile
+                                  </div>
                                 </div>
 
-                                <div class="form-group row">
-                                     <label class="col-sm-3 col-form-label">Browser</label>
+                                <div class="form-group row" id="web1">
+                                     <label class="col-sm-3 col-form-label">Devices</label>
                                      <select class="form-control col-sm-9">
                                          <option>Chrome</option>
-                                         <option>2</option>
-                                         <option>3</option>
-                                         <option>4</option>
-                                         <option>5</option>
+                                         <option>Firefox</option>
+                                         <option>Safari</option>
                                      </select>
                                  </div>
+
+                                 <div class="form-group row" id="mobile1">
+                                      <label class="col-sm-3 col-form-label">Testing Type</label>
+                                      <select class="form-control col-sm-9">
+                                          <option>Iphone 11</option>
+                                          <option>Samsung</option>
+                                          <option>Ipad</option>
+                                      </select>
+                                  </div>
+
 
                                  <div class="form-group row">
                                      <label class="col-sm-3 col-form-label">Emails</label>

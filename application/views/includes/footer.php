@@ -56,8 +56,48 @@
       <!-- Page level custom scripts -->
       <script src="ui-resources/vendor/datatables/jquery.dataTables.min.js"></script>
      <script src="ui-resources/vendor/datatables/dataTables.bootstrap4.min.js"></script>
-      <script src="ui-resources/js/demo/datatables-demo.js"></script>
+      <!-- <script src="ui-resources/js/demo/datatables-demo.js"></script>-->
+      <script type="text/javascript">
+
+      $(document).ready(function() {
+        $('#dataTable').DataTable({
+
+         "bLengthChange" : false,
+         "bInfo":false,
+         columnDefs: [
+             { orderable: false, targets: 0 }
+          ]
+        });
+      });
+
+      </script>
     <?php } ?>
+
+    <?php  if($this->uri->uri_string === 'execution') {?>
+    <script type="text/javascript">
+      $(document).ready(function() {
+
+        $("#mobile").hide();
+        $("#web").show();
+        $("#web1").show();
+        $("#mobile1").hide();
+
+
+      });
+
+      $("input[name='device']").on("change", function() {
+        var device = $("input[name='device']:checked").val();
+
+        if(device ==="web") {
+          $("#mobile").hide();
+          $("#web").show();
+        } else if(device ==="mobile"){
+          $("#web").hide();
+          $("#mobile").show();
+        }
+      })
+    <?php } ?>
+    </script>
 </body>
 
 </html>
