@@ -78,7 +78,7 @@
                       </div>
 
                       <div class="form-group row">
-                           <label class="col-sm-3 col-form-label">Machines</label>
+                           <label class="col-sm-3 col-form-label">Machine</label>
                            <select class="form-control col-sm-9">
                                <option>AWS Machine1</option>
                                <option>AWS Machine2</option>
@@ -167,7 +167,7 @@
                                       </select>
                                   </div>
                                   <div class="form-group row">
-                                       <label class="col-sm-3 col-form-label">Machines</label>
+                                       <label class="col-sm-3 col-form-label">Machine</label>
                                        <select class="form-control col-sm-9">
                                            <option>AWS Machine1</option>
                                            <option>AWS Machine2</option>
