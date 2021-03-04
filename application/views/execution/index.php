@@ -52,13 +52,15 @@
                    <div class="form-group row">
                         <label class="col-sm-3 col-form-label">Device Type</label>
                         <div class="col-sm-9">
-                          <input type="radio" name="device" value="web" checked/> Web
-                          <input type="radio" name="device" value="mobile"/>Mobile
+                          <input type="radio" name="device" value="web" checked id="webRadio"/>
+                          <label for="webRadio">Web</label>
+                          <input type="radio" name="device" value="mobile" id="mobRadio" />
+                          <label for="mobRadio">Mobile</label>
                       </div>
                     </div>
 
                     <div class="form-group row" id="web">
-                         <label class="col-sm-3 col-form-label">Devices</label>
+                         <label class="col-sm-3 col-form-label">Browsers</label>
                          <select class="form-control col-sm-9">
                              <option>Chrome</option>
                              <option>Firefox</option>
@@ -67,13 +69,22 @@
                      </div>
 
                      <div class="form-group row" id="mobile">
-                          <label class="col-sm-3 col-form-label">Testing Type</label>
+                          <label class="col-sm-3 col-form-label">Browsers</label>
                           <select class="form-control col-sm-9">
                               <option>Iphone 11</option>
                               <option>Samsung</option>
                               <option>Ipad</option>
                           </select>
                       </div>
+
+                      <div class="form-group row">
+                           <label class="col-sm-3 col-form-label">Machines</label>
+                           <select class="form-control col-sm-9">
+                               <option>AWS Machine1</option>
+                               <option>AWS Machine2</option>
+                               <option>AWS Machine3</option>
+                           </select>
+                       </div>
 
                     <div class="form-group row">
                         <label class="col-sm-3 col-form-label">Emails</label>
@@ -85,7 +96,7 @@
                         <span class="icon text-white-50">
                             <i class="fas fa-arrow-right"></i>
                         </span>
-                        <span class="text">Run</span>
+                        <span class="text">Next</span>
                     </a>
 
           </form>
@@ -139,7 +150,7 @@
                                 </div>
 
                                 <div class="form-group row" id="web1">
-                                     <label class="col-sm-3 col-form-label">Devices</label>
+                                     <label class="col-sm-3 col-form-label">Browsers</label>
                                      <select class="form-control col-sm-9">
                                          <option>Chrome</option>
                                          <option>Firefox</option>
@@ -148,14 +159,21 @@
                                  </div>
 
                                  <div class="form-group row" id="mobile1">
-                                      <label class="col-sm-3 col-form-label">Testing Type</label>
+                                      <label class="col-sm-3 col-form-label">Devices</label>
                                       <select class="form-control col-sm-9">
                                           <option>Iphone 11</option>
                                           <option>Samsung</option>
                                           <option>Ipad</option>
                                       </select>
                                   </div>
-
+                                  <div class="form-group row">
+                                       <label class="col-sm-3 col-form-label">Machines</label>
+                                       <select class="form-control col-sm-9">
+                                           <option>AWS Machine1</option>
+                                           <option>AWS Machine2</option>
+                                           <option>AWS Machine3</option>
+                                       </select>
+                                   </div>
 
                                  <div class="form-group row">
                                      <label class="col-sm-3 col-form-label">Emails</label>
@@ -169,7 +187,7 @@
                       </div>
                       <div class="modal-footer">
                           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                          <a class="btn btn-primary" href="auditreports">Confirm</a>
+                          <a class="btn btn-primary" href="auditreports">Run</a>
                       </div>
                   </div>
               </div>

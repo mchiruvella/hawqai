@@ -8,6 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
+    <link rel="icon" href="ui-resources/images/favicon.png" type="image/x-icon" />
+
 
     <title>Helen Of Troy</title>
 
@@ -19,6 +21,7 @@
 
     <!-- Custom styles for this template-->
     <link href="ui-resources/css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="ui-resources/css/custom.css" rel="stylesheet">
 
 </head>
 
@@ -32,10 +35,12 @@
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-                <div class="sidebar-brand-icon">
+                <!-- <div class="sidebar-brand-icon">
                     <i class="far fa-square"></i>
-                </div>
-                <div class="sidebar-brand-text ml-3 mr-0">Helen Of Troy </div>
+                </div> -->
+                <!-- <img src="ui-resources/images/hot-logo.png" width="110" /> -->
+                <img src="ui-resources/images/download.png" width="110" />
+                <!-- <div class="sidebar-brand-text ml-3 mr-0"></div> -->
             </a>
 
             <!-- Divider -->
@@ -51,15 +56,32 @@
              <hr class="sidebar-divider"> -->
 
             <!-- Heading -->
-            <div class="sidebar-heading">
-                Welcome
+            <div class="sidebar-heading text-center text-gray-800">
+                QA Portal
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item <?php echo ($this->uri->uri_string === 'execution') ? 'active' : '';?>">
                 <a class="nav-link collapsed" href="execution">
                     <i class="fas fa-fw fa-cog"></i>
-                    <span>Execution Tests</span>
+                    <span>Test Execution</span>
+                </a>
+                <!-- <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Custom Components:</h6>
+                        <a class="collapse-item" href="buttons.html">Buttons</a>
+                        <a class="collapse-item" href="cards.html">Cards</a>
+                    </div>
+                </div> -->
+            </li>
+
+
+
+            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item <?php echo ($this->uri->uri_string === 'taximport') ? 'active' : '';?>">
+                <a class="nav-link collapsed" href="taximport">
+                    <i class="fas fa-file-import"></i>
+                    <span>Tax Import</span>
                 </a>
                 <!-- <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
@@ -151,7 +173,7 @@
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
                                 <img class="img-profile rounded-circle"
-                                    src="img/undraw_profile.svg">
+                                    src="ui-resources/img/undraw_profile.svg">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
