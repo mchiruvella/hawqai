@@ -11,6 +11,10 @@
                            href="https://datatables.net">official DataTables documentation</a>.</p> -->
 
                    <!-- DataTales Example -->
+                   <?php
+                  //var_dump( $this->session->flashdata('run_response'));
+
+                   ?>
                    <div class="card shadow mb-4">
                        <div class="card-header py-3">
                            <h6 class="m-0 font-weight-bold text-dark">Audit Report</h6>

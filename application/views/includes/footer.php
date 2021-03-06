@@ -75,6 +75,11 @@
 
     <?php  if($this->uri->uri_string === 'execution') {?>
     <script type="text/javascript">
+
+      function  previewData(){
+        
+      }
+
       $(document).ready(function() {
 
         $("#mobile").hide();

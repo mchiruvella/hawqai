@@ -29,3 +29,9 @@ th, td{
     font-size: 14px;
     overflow-x: hidden;
 }
+
+@media (min-width: 576px) {
+  #executionModel .modal-dialog {
+    max-width: 620px;
+  }
+}

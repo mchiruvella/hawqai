@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -35,6 +36,11 @@
                     <div class="card-body p-0">
                         <!-- Nested Row within Card Body -->
                         <div class="row">
+                          <?php if ($this->session->flashdata()) { ?>
+                              <div class="alert alert-warning">
+                                  <?= $this->session->flashdata('msg'); ?>
+                              </div>
+                          <?php } ?>
                             <div class="col-lg-12">
                                 <div class="p-5">
                                     <div class="text-center">
@@ -42,24 +48,22 @@
                                         <h1 class="h4 text-gray-900 mb-4 mt-3">
                                           Welcome Back!</h1>
                                     </div>
-                                    <form class="user">
+                                    <form class="user" method="post" action="login/doLogin">
                                         <div class="form-group">
                                             <input type="email" class="form-control form-control-user"
                                                 id="exampleInputEmail" aria-describedby="emailHelp"
-                                                placeholder="Enter Email Address...">
+                                                placeholder="Enter Email Address..." name="email" required>
                                         </div>
                                         <div class="form-group">
                                             <input type="password" class="form-control form-control-user"
-                                                id="exampleInputPassword" placeholder="Password">
+                                                id="exampleInputPassword" placeholder="Password" name="password" required>
                                         </div>
 
-                                        <a href="index.html" class="btn btn-primary btn-user btn-block">
-                                            Login
-                                        </a>
-                                        <hr>
+                                        <input type="submit" class="btn btn-primary btn-user btn-block" value="Login">
+
+
 
                                     </form>
-                                    <hr>
 
                                 </div>
                             </div>
