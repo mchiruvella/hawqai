@@ -21,17 +21,21 @@ class Login extends CI_Controller {
 
   public function doLogin(){
       $email = $this->input->post('email');
-      //$password = sha1($this->input->post('password'));
+      $password = $this->input->post('password');
       //var_dump( password_hash('', PASSWORD_BCRYPT));exit;
-      $password = password_verify($this->input->post('password'), PASSWORD_BCRYPT);
-
+			$hash = $this->login->getPassword($email);
+      $verified = password_verify($password, $hash);
       //send the email pass to query if the user is present or not
-       $check_login = $this->login->checkLogin($email, $password);
+       $user = $this->login->getUserData($email);
        //if the result is query result is 1 then valid user
-       if ($check_login) {
+       if ($verified) {
            //if yes then set the session 'loggin_in' as true
            $this->session->set_userdata('logged_in', true);
-           redirect('auditreports');
+					 //$udata = unset($user[0]);
+					 $this->session->set_userdata("user", $user);
+					  $this->session->set_flashdata('msg', '');
+
+           redirect('execution');
        } else {
            //if no then set the session 'logged_in' as false
            $this->session->set_userdata('logged_in', false);
@@ -47,6 +51,8 @@ class Login extends CI_Controller {
   public function logout() {
        //unset the logged_in session and redirect to login page
        $this->session->unset_userdata('logged_in');
-       redirect(base_url().'login');
+			 $this->session->unset_userdata('user');
+			 $this->session->unset_userdata('msg');
+       redirect('login');
    }
 }

@@ -36,7 +36,7 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
+                    <a class="btn btn-primary" href="login/logout">Logout</a>
                 </div>
             </div>
         </div>
@@ -73,19 +73,46 @@
       </script>
     <?php } ?>
 
+    <?php  if($this->uri->uri_string === 'systemhealth') {?>
+      <!-- Page level custom scripts -->
+      <script src="ui-resources/vendor/datatables/jquery.dataTables.min.js"></script>
+     <script src="ui-resources/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+      <!-- <script src="ui-resources/js/demo/datatables-demo.js"></script>-->
+      <script type="text/javascript">
+
+      $(document).ready(function() {
+        $('#dataTable2').DataTable({
+
+         "bLengthChange" : false,
+         "bInfo":false,
+         columnDefs: [
+             { orderable: false, targets: 0 }
+          ]
+        });
+      });
+
+      </script>
+    <?php } ?>
+
     <?php  if($this->uri->uri_string === 'execution') {?>
+
+     <?php  if($this->input->post('confirm')) { ?>
+      <script type="text/javascript">
+      $('#executionModel').modal('show');
+      </script>
+    <?php } ?>
     <script type="text/javascript">
 
-      function  previewData(){
-        
+      function handleConfirmSubmit() {
+        $('fieldset').removeAttr('disabled');
+        return true;
       }
 
       $(document).ready(function() {
 
         $("#mobile").hide();
         $("#web").show();
-        $("#web1").show();
-        $("#mobile1").hide();
+
 
 
       });

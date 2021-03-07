@@ -36,9 +36,9 @@
                     <div class="card-body p-0">
                         <!-- Nested Row within Card Body -->
                         <div class="row">
-                          <?php if ($this->session->flashdata()) { ?>
-                              <div class="alert alert-warning">
-                                  <?= $this->session->flashdata('msg'); ?>
+                          <?php if ($this->session->flashdata('msg') != '') { ?>
+                              <div class="alert alert-warning col-lg-12 text-center">
+                                  <?= $this->session->flashdata('msg', 300); ?>
                               </div>
                           <?php } ?>
                             <div class="col-lg-12">

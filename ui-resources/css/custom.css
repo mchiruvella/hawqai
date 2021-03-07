@@ -30,6 +30,7 @@ th, td{
     overflow-x: hidden;
 }
 
+
 @media (min-width: 576px) {
   #executionModel .modal-dialog {
     max-width: 620px;

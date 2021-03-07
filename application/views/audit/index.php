@@ -13,7 +13,6 @@
                    <!-- DataTales Example -->
                    <?php
                   //var_dump( $this->session->flashdata('run_response'));
-
                    ?>
                    <div class="card shadow mb-4">
                        <div class="card-header py-3">
@@ -36,139 +35,20 @@
                                    </thead>
 
                                    <tbody>
+
+                                     <?php for($i=0; $i< sizeof($records); $i++) {?>
                                        <tr>
-                                           <td>Revlon UK</td>
-                                           <td>Regression</td>
-                                           <td>Edinburgh</td>
-                                           <td>Chrome</td>
-                                           <td>2011/04/25</td>
-                                           <td>Queued</td>
-                                           <td>mchiruvella@helenoftroy.com	</td>
-                                           <td>mchiruvella@helenoftroy.com,
-                                           mch@helenoftroy.com,
-                                         chiru@helenoftroy.com,	</td>
+                                           <td><?php echo $records[$i]["Project"]; ?></td>
+                                           <td><?php echo $records[$i]["Environment"]; ?></td>
+                                           <td><?php echo $records[$i]["TestingType"]; ?></td>
+                                           <td><?php echo $records[$i]["Browser"]; ?></td>
+                                           <td><?php echo $records[$i]["ScheduledAt"]; ?></td>
+                                           <td><?php echo $records[$i]["ExecutionStatus"]; ?></td>
+                                           <td><?php echo $records[$i]["TriggeredBy"]; ?></td>
+                                           <td><?php echo $records[$i]["Emails"]; ?></td>
                                        </tr>
 
-                                       <tr>
-                                           <td>Healen of Troy</td>
-                                           <td>Regression</td>
-                                           <td>Edinburgh</td>
-                                           <td>Chrome</td>
-                                           <td>2010/03/05</td>
-                                           <td>Completed</td>
-                                           <td>mchiruvella@helenoftroy.com	</td>
-                                           <td>mchiruvella@helenoftroy.com	</td>
-                                       </tr>
-
-                                       <tr>
-                                           <td>Healen of Troy</td>
-                                           <td>Regression</td>
-                                           <td>Edinburgh</td>
-                                           <td>Chrome</td>
-                                           <td>2010/03/05</td>
-                                           <td>Completed</td>
-                                           <td>mchiruvella@helenoftroy.com	</td>
-                                           <td>mchiruvella@helenoftroy.com	</td>
-                                       </tr>
-
-                                       <tr>
-                                           <td>Healen of Troy</td>
-                                           <td>Regression</td>
-                                           <td>Edinburgh</td>
-                                           <td>Chrome</td>
-                                           <td>2010/03/05</td>
-                                           <td>Completed</td>
-                                           <td>mchiruvella@helenoftroy.com	</td>
-                                           <td>mchiruvella@helenoftroy.com	</td>
-                                       </tr>
-
-                                       <tr>
-                                           <td>Healen of Troy</td>
-                                           <td>Regression</td>
-                                           <td>Edinburgh</td>
-                                           <td>Chrome</td>
-                                           <td>2010/03/05</td>
-                                           <td>Completed</td>
-                                           <td>mchiruvella@helenoftroy.com	</td>
-                                           <td>mchiruvella@helenoftroy.com	</td>
-                                       </tr>
-
-                                       <tr>
-                                           <td>Healen of Troy</td>
-                                           <td>Regression</td>
-                                           <td>Edinburgh</td>
-                                           <td>Chrome</td>
-                                           <td>2010/03/05</td>
-                                           <td>Completed</td>
-                                           <td>mchiruvella@helenoftroy.com	</td>
-                                           <td>mchiruvella@helenoftroy.com	</td>
-                                       </tr>
-
-                                       <tr>
-                                           <td>Healen of Troy</td>
-                                           <td>Regression</td>
-                                           <td>Edinburgh</td>
-                                           <td>Chrome</td>
-                                           <td>2010/03/05</td>
-                                           <td>Completed</td>
-                                           <td>mchiruvella@helenoftroy.com	</td>
-                                           <td>mchiruvella@helenoftroy.com	</td>
-                                       </tr>
-
-                                       <tr>
-                                           <td>Healen of Troy</td>
-                                           <td>Regression</td>
-                                           <td>Edinburgh</td>
-                                           <td>Chrome</td>
-                                           <td>2010/03/05</td>
-                                           <td>Completed</td>
-                                           <td>mchiruvella@helenoftroy.com	</td>
-                                           <td>mchiruvella@helenoftroy.com	</td>
-                                       </tr>
-
-                                       <tr>
-                                           <td>Healen of Troy</td>
-                                           <td>Regression</td>
-                                           <td>Edinburgh</td>
-                                           <td>Chrome</td>
-                                           <td>2010/03/05</td>
-                                           <td>Completed</td>
-                                           <td>mchiruvella@helenoftroy.com	</td>
-                                           <td>mchiruvella@helenoftroy.com	</td>
-                                       </tr>
-
-                                       <tr>
-                                           <td>Healen of Troy</td>
-                                           <td>Regression</td>
-                                           <td>Edinburgh</td>
-                                           <td>Chrome</td>
-                                           <td>2010/03/05</td>
-                                           <td>Completed</td>
-                                           <td>mchiruvella@helenoftroy.com	</td>
-                                           <td>mchiruvella@helenoftroy.com	</td>
-                                       </tr>
-
-                                       <tr>
-                                           <td>Healen of Troy</td>
-                                           <td>Regression</td>
-                                           <td>Edinburgh</td>
-                                           <td>Chrome</td>
-                                           <td>2010/03/05</td>
-                                           <td>Completed</td>
-                                           <td>mchiruvella@helenoftroy.com	</td>
-                                           <td>mchiruvella@helenoftroy.com	</td>
-                                       </tr>
-
-                                       <tr>
-                                           <td>Healen of Troy</td>
-                                           <td>Regression</td>
-                                           <td>Edinburgh</td>
-                                           <td>Chrome</td>
-                                           <td>2010/03/05</td>
-                                           <td>Completed</td>
-                                           <td>mchiruvella@helenoftroy.com	</td>
-                                           <td>mchiruvella@helenoftroy.com	</td>
-                                       </tr>
+                                     <?php } ?>
 
 
                                    </tbody>

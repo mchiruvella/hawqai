@@ -16,6 +16,7 @@ class Execution extends CI_Controller {
 
 	public function run()
 	{
+
 		$runURL = "http://jenkins.helenoftroy.com:8080/view/all/job/TestAutomation/job/RevlonSystemTests/buildWithParameters?delay=0sec&config=Revelon%5C%5Cconfig.properties&testNG=Revlon%5C%5CRevlon_ST.xml";
 		$curl = curl_init();
 

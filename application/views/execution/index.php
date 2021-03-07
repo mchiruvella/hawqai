@@ -1,4 +1,5 @@
-<?php $this->load->view('includes/header');?>
+<?php ini_set('display_errors', 1);
+$this->load->view('includes/header');?>
 
 <!-- Begin Page Content -->
 <div class="container-fluid">
@@ -15,91 +16,16 @@
              <h6 class="m-0 font-weight-bold text-gray-800">Execution Tests</h6>
          </div>
          <div class="card-body">
-           <form role="form" id="runExecution">
+           <form role="form" id="runExecution" method="post" action="execution">
+             <?php $this->load->view('execution/fields'); ?>
+              <button type="submit"class="btn btn-primary btn-icon-split float-right">
+                  <span class="icon text-white-50">
+                      <i class="fas fa-arrow-right"></i>
+                  </span>
+                  <span class="text">Next</span>
 
-                <div class="form-group row">
-                     <label class="col-sm-3 col-form-label">Project</label>
-                     <select class="form-control col-sm-9" name="project">
-                         <option value="Revlon UK">Revlon UK</option>
-                         <option value="2">2</option>
-
-                     </select>
-                 </div>
-
-                 <div class="form-group row">
-                      <label class="col-sm-3 col-form-label">Environment</label>
-                      <select class="form-control col-sm-9" name="environment">
-                          <option value="staging">Staging</option>
-                          <option value="2">2</option>
-
-                      </select>
-                  </div>
-
-                  <div class="form-group row">
-                       <label class="col-sm-3 col-form-label">Testing Type</label>
-                       <select class="form-control col-sm-9" name="testingTYpe">
-                           <option value="smoke">Build smoke testing</option>
-                           <option value="regression">System regression testing</option>
-                           <option value="integration">System integration testing</option>
-                       </select>
-                   </div>
-
-
-                   <div class="form-group row">
-                        <label class="col-sm-3 col-form-label">Device Type</label>
-                        <div class="col-sm-9">
-                          <input type="radio" name="device" value="web" checked id="webRadio"/>
-                          <label for="webRadio">Web</label>
-                          <input type="radio" name="device" value="mobile" id="mobRadio" />
-                          <label for="mobRadio">Mobile</label>
-                      </div>
-                    </div>
-
-                    <div class="form-group row" id="web">
-                         <label class="col-sm-3 col-form-label">Browsers</label>
-                         <select class="form-control col-sm-9" name="browsers">
-                            <option>--- Select ---</option>
-                             <option value="chrome">Chrome</option>
-                             <option value="firefox">Firefox</option>
-                             <option value="safari">Safari</option>
-                         </select>
-                     </div>
-
-                     <div class="form-group row" id="mobile">
-                          <label class="col-sm-3 col-form-label">Devices</label>
-                          <select class="form-control col-sm-9" name="devices">
-                            <option>--- Select ---</option>
-                              <option value="iphone11">Iphone 11</option>
-                              <option value="samsung">Samsung</option>
-                              <option value="ipad">Ipad</option>
-                          </select>
-                      </div>
-
-                      <div class="form-group row">
-                           <label class="col-sm-3 col-form-label">Machine</label>
-                           <select class="form-control col-sm-9" name="machine">
-                              <option>--- Select ---</option>
-                               <option value="machine1">AWS Machine1</option>
-                               <option value="machine2">AWS Machine2</option>
-                               <option value="machine3">AWS Machine3</option>
-                           </select>
-                       </div>
-
-                    <div class="form-group row">
-                        <label class="col-sm-3 col-form-label">Emails</label>
-                        <input class="form-control col-sm-9" type="text" name="emails" />
-                        <em class="help-block float-right col-sm-6 text-italic">(Enter comma separated values)</em>
-                    </div>
-
-                    <a href="#" class="btn btn-primary btn-icon-split float-right" data-toggle="modal" data-target="#executionModel">
-                        <span class="icon text-white-50">
-                            <i class="fas fa-arrow-right"></i>
-                        </span>
-                        <span class="text">Next</span>
-                    </a>
-
+              </button>
           </form>
-
 
           <!-- Modal starts here-->
 
@@ -120,73 +46,88 @@
 
                           <fieldset disabled>
 
+                            <div class="form-group row">
+                                 <label class="col-sm-3 col-form-label">Project</label>
+                                 <select class="form-control col-sm-9" name="project" value="<?php echo $this->input->post('project'); ?>">
+                                    <option value="" <?php echo in_array($this->input->post('project'), [NULL, ""])  ? 'selected' : '';?>>--- Select ---</option>
+                                     <option value="Revlon UK" <?php echo $this->input->post('project') === 'Revlon UK' ? 'selected' : ''?>>Revlon UK</option>
+                                     <option value="2" <?php echo $this->input->post('project') === '2' ? 'selected' : '' ;?>>2</option>
+                                 </select>
+                             </div>
                              <div class="form-group row">
-                                  <label class="col-sm-3 col-form-label">Project</label>
-                                  <select class="form-control col-sm-9">
-                                      <option>Revlon UK</option>
-                                      <option>2</option>
-                                      <option>3</option>
-                                      <option>4</option>
-                                      <option>5</option>
+                                  <label class="col-sm-3 col-form-label">Environment</label>
+                                  <select class="form-control col-sm-9" name="environment" value="<?php echo $this->input->post('environment')?>">
+                                    <option value="" <?php echo in_array($this->input->post('environment'), [NULL, ""])  ? 'selected' : '';?>>--- Select ---</option>
+                                      <option value="staging" <?php echo $this->input->post('environment') === 'staging' ? "selected" : ''?>>Staging</option>
+                                      <option value="2" <?php echo $this->input->post('environment') === '2' ? "selected" : ''?>>2</option>
                                   </select>
                               </div>
 
                               <div class="form-group row">
-                                   <label class="col-sm-3 col-form-label">Environment</label>
-                                   <select class="form-control col-sm-9">
-                                       <option>Staging</option>
-                                       <option>2</option>
-                                       <option>3</option>
-                                       <option>4</option>
-                                       <option>5</option>
+                                   <label class="col-sm-3 col-form-label">Testing Type</label>
+                                   <select class="form-control col-sm-9" name="testingTYpe" value="<?php echo $this->input->post('testingTYpe')?>">
+                                     <option value="" <?php echo in_array($this->input->post('testingTYpe'), [NULL, ""])  ? 'selected' : '';?>>--- Select ---</option>
+                                       <option value="smoke" <?php echo $this->input->post('testingTYpe') === 'smoke' ? "selected" : ''?>>Build smoke testing</option>
+                                       <option value="regression" <?php echo $this->input->post('testingTYpe') === 'regression' ? "selected" : ''?>>System regression testing</option>
+                                       <option value="integration" <?php echo $this->input->post('testingTYpe') === 'integration' ? "selected" : ''?>>System integration testing</option>
                                    </select>
                                </div>
+
+
                                <div class="form-group row">
                                     <label class="col-sm-3 col-form-label">Device Type</label>
                                     <div class="col-sm-9">
-                                      <input type="radio" name="device" value="web" checked/> Web
-                                      <input type="radio" name="device" value="mobile"/>Mobile
+                                      <input type="radio" name="device" value="web" <?php echo $this->input->post('device') === 'web' ? "checked" : "";?> id="webRadio"/>
+                                      <label for="webRadio">Web</label>
+                                      <input type="radio" name="device" value="mobile" <?php echo $this->input->post('device') === 'mobile' ? "checked" : "";?> id="mobRadio" />
+                                      <label for="mobRadio">Mobile</label>
                                   </div>
                                 </div>
-
-                                <div class="form-group row" id="web1">
+                                <?php if($this->input->post('device') === 'web') {?>
+                                <div class="form-group row" >
                                      <label class="col-sm-3 col-form-label">Browsers</label>
-                                     <select class="form-control col-sm-9">
-                                         <option>Chrome</option>
-                                         <option>Firefox</option>
-                                         <option>Safari</option>
+                                     <select class="form-control col-sm-9" name="browsers" value="<?php echo $this->input->post('browsers')?>">
+                                        <option value="" <?php echo in_array($this->input->post('browsers'), [NULL, ""])  ? 'selected' : '';?>>--- Select ---</option>
+                                         <option value="chrome"  <?php echo $this->input->post('browsers') === 'chrome' ? "selected" : ''?>>Chrome</option>
+                                         <option value="firefox"  <?php echo $this->input->post('browsers') === 'firefox' ? "selected" : ''?>>Firefox</option>
+                                         <option value="safari"  <?php echo $this->input->post('browsers') === 'safari' ? "selected" : ''?>>Safari</option>
                                      </select>
                                  </div>
+                               <?php  } ?>
 
-                                 <div class="form-group row" id="mobile1">
+                              <?php if($this->input->post('device') === 'mobile') {?>
+                                 <div class="form-group row">
                                       <label class="col-sm-3 col-form-label">Devices</label>
-                                      <select class="form-control col-sm-9">
-                                          <option>Iphone 11</option>
-                                          <option>Samsung</option>
-                                          <option>Ipad</option>
+                                      <select class="form-control col-sm-9" name="devices" value="<?php echo $this->input->post('devices')?>">
+                                        <option value="" <?php echo in_array($this->input->post('devices'), [NULL, ""])  ? 'selected' : '';?>>--- Select ---</option>
+                                          <option value="iphone11" <?php echo $this->input->post('devices') === 'iphone11' ? "selected" : ''?> >Iphone 11</option>
+                                          <option value="samsung"  <?php echo $this->input->post('devices') === 'samsung' ? "selected" : ''?>Samsung</option>
+                                          <option value="ipad"  <?php echo $this->input->post('devices') === 'ipad' ? "selected" : ''?>Ipad</option>
                                       </select>
                                   </div>
+                                <?php } ?>
                                   <div class="form-group row">
                                        <label class="col-sm-3 col-form-label">Machine</label>
-                                       <select class="form-control col-sm-9">
-                                           <option>AWS Machine1</option>
-                                           <option>AWS Machine2</option>
-                                           <option>AWS Machine3</option>
+                                       <select class="form-control col-sm-9" name="machine" value="<?php echo $this->input->post('machine')?>">
+                                          <option value="" <?php echo in_array($this->input->post('machine'), [NULL, ""])  ? 'selected' : '';?>>--- Select ---</option>
+                                           <option value="machine1"  <?php echo $this->input->post('machine') === 'machine1' ? "selected" : ''?>>AWS Machine1</option>
+                                           <option value="machine2"  <?php echo $this->input->post('machine') === 'machine2' ? "selected" : ''?>>AWS Machine2</option>
+                                           <option value="machine3"  <?php echo $this->input->post('machine') === 'machine3' ? "selected" : ''?>>AWS Machine3</option>
                                        </select>
                                    </div>
 
-                                 <div class="form-group row">
-                                     <label class="col-sm-3 col-form-label">Emails</label>
-                                     <input class="form-control col-sm-9" type="text" />
-                                     <em class="help-block float-right col-sm-6 text-italic">(comma separated values)</em>
-                                 </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">Emails</label>
+                                    <input class="form-control col-sm-9" type="text" name="emails" value="<?php echo $this->input->post('emails')?> "/>
+                                </div>
 
-                              </fieldset>
+
+                            </fieldset>
 
                       </div>
                       <div class="modal-footer">
                           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                          <input type="submit" class="btn btn-primary" type="button"  value="Run"/>
+                          <input type="submit" class="btn btn-primary" type="button"  value="Run" onclick="return handleConfirmSubmit()"/>
                       </div>
                     </form>
                   </div>
