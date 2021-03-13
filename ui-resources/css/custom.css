@@ -2,6 +2,12 @@
   float: right;
 }
 
+.dataTables_filter{
+  width: 50%;
+  float: right;
+  text-align: right;
+}
+
 input[type="radio"]{
   margin: 0 10px 0 10px;
 }

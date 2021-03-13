@@ -66,7 +66,8 @@
          "bInfo":false,
          columnDefs: [
              { orderable: false, targets: 0 }
-          ]
+          ],
+          "order": [[ 4, "desc" ]]
         });
       });
 
@@ -82,7 +83,7 @@
 
       $(document).ready(function() {
         $('#dataTable2').DataTable({
-
+          "bPaginate" : false,
          "bLengthChange" : false,
          "bInfo":false,
          columnDefs: [

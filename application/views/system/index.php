@@ -24,21 +24,21 @@
 
                              <table class="table table-bordered" id="dataTable2" width="100%" cellspacing="0">
                                  <thead>
-                                     <tr style="background-color: #e2e2e2;border:1px solid #b6b6b6">
-                                         <th rowspan="2">Project</th>
-                                         <th  rowspan="2">CRON Job</th>
-                                         <th  rowspan="2">Order Export Job</th>
-                                         <th  rowspan="2">Order Import Job</th>
-                                         <th  rowspan="2">Index Management</th>
-                                         <th  rowspan="2">Order Tracking Status</th>
-                                         <th colspan="2" valign="center">
+                                     <tr style="background-color: #002147;border:1px solid #002147;color:#FFFFFF">
+                                         <th  style="color:#FFFFFF; text-align: center; vertical-align:middle;" rowspan="2">Project</th>
+                                         <th  style="color:#FFFFFF; text-align: center; vertical-align:middle;"  rowspan="2">CRON Job</th>
+                                         <th  style="color:#FFFFFF; text-align: center; vertical-align:middle;"  rowspan="2">Order Export Job</th>
+                                         <th  style="color:#FFFFFF; text-align: center; vertical-align:middle;"  rowspan="2">Order Import Job</th>
+                                         <th  style="color:#FFFFFF; text-align: center; vertical-align:middle;"  rowspan="2">Index Management</th>
+                                         <th  style="color:#FFFFFF; text-align: center; vertical-align:middle;"  rowspan="2">Order Tracking Status</th>
+                                         <th style="color:#FFFFFF; text-align: center; vertical-align:middle;"  colspan="2" valign="center">
                                            Google Insight Score
                                          </th>
 
                                      </tr>
-                                     <tr style="background-color: #e2e2e2;border:1px solid #b6b6b6">
-                                         <th>Web</th>
-                                         <th>Mobile</th>
+                                     <tr style="background-color: #002147;border:1px solid #002147;color:#FFFFFF">
+                                         <th style="color:#FFFFFF; text-align: center; vertical-align:middle;" >Web</th>
+                                         <th style="color:#FFFFFF; text-align: center; vertical-align:middle;" >Mobile</th>
                                      </tr>
 
                                  </thead>
@@ -46,15 +46,15 @@
                                  <tbody>
                                    <?php for($i=0; $i< sizeof($records); $i++) {?>
                                      <tr>
-                                         <td style="background-color: #e2e2e2;"><?php echo $records[$i]["Project"]; ?></td>
-                                         <td><?php echo $records[$i]["Cronjob"]; ?></td>
-                                         <td><?php echo $records[$i]["OrderExport"]; ?></td>
-                                         <td><?php echo $records[$i]["OrderImport"]; ?></td>
-                                         <td><?php echo $records[$i]["IndexManagement"]; ?> </td/>
+                                         <td style="text-align: center; vertical-align:middle;"><?php echo $records[$i]["Project"]; ?></td>
+                                         <td style="color:#FFFFFF; text-align: center; vertical-align:middle;" class="<?php echo $records[$i]['Cronjob'] === 'Failed' ?  'bg-danger': 'bg-success' ?>"><?php echo $records[$i]["Cronjob"]; ?></td>
+                                         <td style="color:#FFFFFF; text-align: center; vertical-align:middle;" class="<?php echo $records[$i]['OrderExport'] === 'Failed' ?  'bg-danger': 'bg-success' ?>"><?php echo $records[$i]["OrderExport"]; ?></td>
+                                         <td style="color:#FFFFFF; text-align: center; vertical-align:middle;" class="<?php echo $records[$i]['OrderImport'] === 'Failed' ?  'bg-danger': 'bg-success' ?>"><?php echo $records[$i]["OrderImport"]; ?></td>
+                                         <td style="color:#FFFFFF; text-align: center; vertical-align:middle;" class="<?php echo $records[$i]['IndexManagement'] === 'Failed' ?  'bg-danger': 'bg-success' ?>"><?php echo $records[$i]["IndexManagement"]; ?> </td/>
 
-                                         <td><?php echo $records[$i]["OrderTrackingStatus"]; ?></td>
-                                         <td><?php echo $records[$i]["InsightScoreWeb"]; ?></td>
-                                         <td><?php echo $records[$i]["InsightScoreMobile"]; ?></td>
+                                         <td style="color:#FFFFFF; text-align: center; vertical-align:middle;" class="<?php echo $records[$i]['OrderTrackingStatus'] === 'Failed' ?  'bg-danger': 'bg-success' ?>"><?php echo $records[$i]["OrderTrackingStatus"]; ?><br>Previous: <?php echo $records[$i]["PreviousOrders"];?><br>Current: <?php echo $records[$i]["CurrentOrders"];?></td>
+                                         <td style="text-align: center; vertical-align:middle;"><?php echo $records[$i]["InsightScoreWeb"]; ?></td>
+                                         <td style="text-align: center; vertical-align:middle;"><?php echo $records[$i]["InsightScoreMobile"]; ?></td>
                                      </tr>
                                    <?php } ?>
 

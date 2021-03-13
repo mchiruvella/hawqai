@@ -22,13 +22,14 @@
                            <div class="table-responsive">
                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                    <thead>
-                                       <tr>
+                                       <tr style="background-color: #e2e2e2;border:1px solid #b6b6b6">
                                            <th>Project</th>
                                            <th>Environment</th>
                                            <th>Testing Type</th>
                                            <th>Browser</th>
                                            <th>Scheduled AT</th>
-                                           <th>Status</th>
+                                           <th>Execution Status</th>
+                                           <th>Machine</th>
                                            <th>Triggered By</th>
                                            <th>Emails</th>
                                        </tr>
@@ -44,6 +45,7 @@
                                            <td><?php echo $records[$i]["Browser"]; ?></td>
                                            <td><?php echo $records[$i]["ScheduledAt"]; ?></td>
                                            <td><?php echo $records[$i]["ExecutionStatus"]; ?></td>
+                                           <td><?php echo $records[$i]["Machine"]; ?></td>
                                            <td><?php echo $records[$i]["TriggeredBy"]; ?></td>
                                            <td><?php echo $records[$i]["Emails"]; ?></td>
                                        </tr>
