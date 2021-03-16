@@ -1,4 +1,4 @@
-#dataTable_filter{
+#dataTable_filter, #dataTable2_filter{
   float: right;
 }
 
@@ -41,4 +41,8 @@ th, td{
   #executionModel .modal-dialog {
     max-width: 620px;
   }
+}
+.dataTables_filter{
+  width: 50%;
+  float: right;
 }

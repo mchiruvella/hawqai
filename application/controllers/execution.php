@@ -6,17 +6,17 @@ class Execution extends CI_Controller {
 	public function __construct(){
 		parent::__construct();
 		  $this->load->library(['session']);
+			$this->load->database();
+			$this->load->model('AuditReportsModel', 'report');
 	}
 
   public function index()
-
   {
     $this->load->view('execution/index');
   }
 
 	public function run()
 	{
-
 
 		$runURL = "http://jenkins.helenoftroy.com:8080/view/all/job/TestAutomation/job/RevlonSystemTests/buildWithParameters?delay=0sec&config=Revelon%5C%5Cconfig.properties&testNG=Revlon%5C%5CRevlon_ST.xml";
 		$curl = curl_init();
@@ -42,7 +42,7 @@ class Execution extends CI_Controller {
 		curl_close($curl);
 		$this->session->set_flashdata('run_response',$response);
 
-		
+
 		$status=$this->getrecorddetails();
 		$nodestatus=$status->result;
 		if(is_null($status->result)){
@@ -69,7 +69,7 @@ class Execution extends CI_Controller {
 
 	function getrecorddetails() {
 
-	
+
 		$clientstatus=array();
 		$curl = curl_init();
 
@@ -101,8 +101,18 @@ class Execution extends CI_Controller {
 		$status = json_decode($response);
 
 		return $status;
-		
 
+	}
+
+	public function getTestCases()
+	{
+		$Project = $this->input->get('project');
+		$Environment = $this->input->get('environment');
+		$testingTYpe = $this->input->get('testingTYpe');
+		$Device = $this->input->get('device');
+		$platform =  $this->input->get('platform');
+		$result = $this->report->getTestCasesModel($Project, $Environment, $testingTYpe, $Device, $platform);
+		echo $result;
 
 	}
 }

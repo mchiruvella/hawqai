@@ -20,6 +20,8 @@
                            <h6 class="m-0 font-weight-bold text-dark">System Health</h6>
                        </div>
                        <div class="card-body">
+
+
                            <div class="table-responsive">
 
                              <table class="table table-bordered" id="dataTable2" width="100%" cellspacing="0">

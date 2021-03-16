@@ -13,7 +13,8 @@ class Systemhealth extends CI_Controller {
 
   public function index()
   {
-		$result = $this->report->getSystemHealth();
+		$date = $this->input->get('date');
+		$result = $this->report->getSystemHealth($date);
 		$data = array("records" => $result);
   	$this->load->view('system/index', $data);
   }

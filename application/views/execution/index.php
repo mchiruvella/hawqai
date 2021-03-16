@@ -36,13 +36,11 @@ $this->load->view('includes/header');?>
                     <form role="form"  method="post" action="execution/run">
                       <div class="modal-header">
                           <h5 class="modal-title" id="exampleModalLabel">Confirm execution?</h5>
-                          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                          <button class="close" type="button" data-dismiss="modal" aria-label="Close" onclick="cancelClick()">
                               <span aria-hidden="true">×</span>
                           </button>
                       </div>
                       <div class="modal-body">
-
-
 
                           <fieldset disabled>
 
@@ -111,6 +109,13 @@ $this->load->view('includes/header');?>
                                       </select>
                                   </div>
                                 <?php } ?>
+
+                                <div class="form-group row" id="testcases_block1">
+                                    <label class="col-sm-3 col-form-label">No of Test Cases</label>
+                                    <input class="form-control col-sm-9" type="text" name="testcases" value="<?php echo $this->input->post('testcases')?>" readonly/>
+                                </div>
+
+
                                   <div class="form-group row">
                                        <label class="col-sm-3 col-form-label">Machine</label>
                                        <select class="form-control col-sm-9" name="machine" value="<?php echo $this->input->post('machine')?>">
@@ -131,7 +136,7 @@ $this->load->view('includes/header');?>
 
                       </div>
                       <div class="modal-footer">
-                          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                          <button class="btn btn-secondary" type="button" data-dismiss="modal" onclick="cancelClick()">Cancel</button>
                           <input type="submit" class="btn btn-primary" type="button"  value="Run" onclick="return handleConfirmSubmit()"/>
                       </div>
                     </form>

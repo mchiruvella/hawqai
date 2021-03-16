@@ -51,13 +51,20 @@
 
     <!-- Custom scripts for all pages-->
     <script src="ui-resources/js/sb-admin-2.min.js"></script>
+    <script src="ui-resources/vendor/datatables/jquery.dataTables.min.js"></script>
+   <script src="ui-resources/vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
     <?php  if($this->uri->uri_string === 'auditreports') {?>
-      <!-- Page level custom scripts -->
-      <script src="ui-resources/vendor/datatables/jquery.dataTables.min.js"></script>
-     <script src="ui-resources/vendor/datatables/dataTables.bootstrap4.min.js"></script>
       <!-- <script src="ui-resources/js/demo/datatables-demo.js"></script>-->
       <script type="text/javascript">
+
+      $(document).ready(function() {
+        var val = 'Never';
+        if(window.sessionStorage.refresh && window.sessionStorage.refresh !== null) {
+          val = window.sessionStorage.refresh;
+        }
+          $('#refresh').val(val);
+      })
 
       $(document).ready(function() {
         $('#dataTable').DataTable({
@@ -82,8 +89,10 @@
       <script type="text/javascript">
 
       $(document).ready(function() {
+
         $('#dataTable2').DataTable({
           "bPaginate" : false,
+          searching: false,
          "bLengthChange" : false,
          "bInfo":false,
          columnDefs: [
@@ -92,6 +101,42 @@
         });
       });
 
+      function updateURLParameter(url, param, paramVal){
+        var newAdditionalURL = "";
+        var tempArray = url.split("?");
+        var baseURL = tempArray[0];
+        var additionalURL = tempArray[1];
+        var temp = "";
+        if (additionalURL) {
+            tempArray = additionalURL.split("&");
+            for (var i=0; i<tempArray.length; i++){
+                if(tempArray[i].split('=')[0] != param){
+                    newAdditionalURL += temp + tempArray[i];
+                    temp = "&";
+                }
+            }
+        }
+
+        var rows_txt = temp + "" + param + "=" + paramVal;
+        return baseURL + "?" + newAdditionalURL + rows_txt;
+    }
+
+
+    let dateArr = window.location.search.split('?date=');
+
+      $("#datepicker_from").datepicker({
+          showOn: "button",
+          buttonImage: "http://jqueryui.com/resources/demos/datepicker/images/calendar.gif",
+          buttonImageOnly: false,
+          maxDate: new Date(),
+          dateFormat: 'yy-mm-dd',
+          onSelect: function(date) {
+            console.log("changed date", date);
+            var url = new URL(window.location.href);
+            url.search = "?date="+date;
+            window.location.href = url;
+          }
+        }).datepicker("setDate", new Date(dateArr[1]))
       </script>
     <?php } ?>
 
@@ -100,9 +145,42 @@
      <?php  if($this->input->post('confirm')) { ?>
       <script type="text/javascript">
       $('#executionModel').modal('show');
+
+
       </script>
     <?php } ?>
     <script type="text/javascript">
+
+      function getTestCasesReport() {
+        const project = $('select[name="project"]').val();
+        const environment = $('select[name="environment"]').val();
+        const testingTYpe =  $('select[name="testingTYpe"]').val();
+        const browsers =  $('select[name="browsers"]').val();
+        const device = $('input[name="device"]:checked').val();
+        const devices =  $('select[name="devices"]').val();
+
+        var platform = device === 'web' ? browsers : devices;
+
+        if([project, environment, testingTYpe, device].includes('')){
+          console.log("Empty found returning")
+            return ;
+        }
+        var url = "execution/getTestCases?project="+project+"&environment="+environment+"&testingTYpe="+testingTYpe+"&device="+device+"&platform="+platform;
+          $.get(url,function(data,status) {
+            $("#testcases_block").find('input').val(data);
+              $("#testcases_block1").find('input').val(data);
+            $("#testcases_block").show();
+            $("#testcases_block1").show();
+            console.log(data);
+          })
+      }
+
+      function cancelClick() {
+        if($("#testcases_block").find('input').val()){
+            $("#testcases_block").show();
+        }
+
+      }
 
       function handleConfirmSubmit() {
         $('fieldset').removeAttr('disabled');
@@ -110,7 +188,7 @@
       }
 
       $(document).ready(function() {
-
+        $("#testcases_block").hide();
         $("#mobile").hide();
         $("#web").show();
 
@@ -130,6 +208,8 @@
         }
       })
     <?php } ?>
+
+
     </script>
 </body>
 

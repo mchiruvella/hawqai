@@ -19,6 +19,18 @@
                            <h6 class="m-0 font-weight-bold text-dark">Audit Report</h6>
                        </div>
                        <div class="card-body">
+                         <div><label class="col-sm-2 col-form-label float-left">Refresh rate</label>
+
+                         <select class="form-control col-sm-3" name="refresh" id="refresh" onchange="setPageRefresh(this.value)">
+                           <option value="">--- Select ---</option>
+                            <option value="30">Default</option>
+                             <option value="Never" >Never</option>
+                             <option value="10" >10 sec</option>
+                             <option value="20" >20 sec</option>
+
+                        </select>
+                      </div>
+
                            <div class="table-responsive">
                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                    <thead>

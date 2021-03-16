@@ -14,6 +14,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="ui-resources/images/favicon.png" type="image/x-icon" />
+     <link data-require="jqueryui@*" data-semver="1.10.0" rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.0/css/smoothness/jquery-ui-1.10.0.custom.min.css" />
 
 
     <title>Helen Of Troy</title>
