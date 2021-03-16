@@ -48,7 +48,6 @@
 
     <!-- Core plugin JavaScript-->
     <script src="ui-resources/vendor/jquery-easing/jquery.easing.min.js"></script>
-
     <!-- Custom scripts for all pages-->
     <script src="ui-resources/js/sb-admin-2.min.js"></script>
     <script src="ui-resources/vendor/datatables/jquery.dataTables.min.js"></script>
@@ -65,6 +64,31 @@
         }
           $('#refresh').val(val);
       })
+
+      function setPageRefresh(sec,onload){
+        clearInterval();
+        if(onload) {
+          sec = (!isNaN(window.sessionStorage.refresh) || window.sessionStorage.refresh ==='Never')  ? window.sessionStorage.refresh : 30;
+        }
+
+        if(sec === 'Never') {
+          window.sessionStorage.refresh = sec;
+          return;
+        }
+
+        if(sec !== 'Never' && sec !== undefined) {
+          window.sessionStorage.refresh = sec;
+
+          var milliseconds = sec * 1000;
+          var id = setInterval(function(){
+            window.location.reload();
+            console.log("Refreshing at ", sec ," Sec");
+           }, milliseconds);
+
+        }
+      };
+
+      setPageRefresh(30,true);
 
       $(document).ready(function() {
         $('#dataTable').DataTable({
@@ -83,9 +107,8 @@
 
     <?php  if($this->uri->uri_string === 'systemhealth') {?>
       <!-- Page level custom scripts -->
-      <script src="ui-resources/vendor/datatables/jquery.dataTables.min.js"></script>
-     <script src="ui-resources/vendor/datatables/dataTables.bootstrap4.min.js"></script>
-      <!-- <script src="ui-resources/js/demo/datatables-demo.js"></script>-->
+      <script data-require="jqueryui@*" data-semver="1.10.0" src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.0/jquery-ui.js"></script>
+
       <script type="text/javascript">
 
       $(document).ready(function() {

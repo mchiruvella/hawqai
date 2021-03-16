@@ -23,6 +23,10 @@
 
 
                            <div class="table-responsive">
+                             <p id="date_filter">
+        <span id="date-label-from" class="date-label">From: </span><input class="date_range_filter date" type="text" id="datepicker_from" />
+
+    </p>
 
                              <table class="table table-bordered" id="dataTable2" width="100%" cellspacing="0">
                                  <thead>
