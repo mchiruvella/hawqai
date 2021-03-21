@@ -22,7 +22,9 @@ class AuditReports extends CI_Controller {
 	{
 		$result = $this->report->getLatestRecordsStatus();
 
-		//var_dump($result);
+		if(count($result) === 0){
+			echo "Nothing to update. All are upto date.";
+		}
 
 		for($i=0; $i<sizeof($result); $i++){
 			$url = $result[$i]['BuildURL'];
@@ -31,11 +33,15 @@ class AuditReports extends CI_Controller {
 					$result[$i]['ExecutionStatus'] = $status;
 			}
 		}
-
-		for($i=0; $i<sizeof($result); $i++){
-			$result = $this->report->updateStatus($result[$i]);
+		//var_dump($result);exit;
+		if($result){
+			for($i=0; $i<sizeof($result); $i++){
+				$r = $this->report->updateStatus($result[$i]);
+				if($r){
+				echo "Status Updated for Record with ID >".$result[$i]['id'];
+				}
+			}
 		}
-
 
 	}
 

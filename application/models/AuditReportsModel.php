@@ -48,7 +48,6 @@ class AuditReportsModel extends CI_Model {
     }
     public function updateStatus($record)
     {
-
       $this->db->where('id', $record['id']);
       return $this->db->update('executionaudit', $record);
     }
