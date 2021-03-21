@@ -48,6 +48,12 @@ class Login extends CI_Controller {
 
   }
 
+	public function generate()
+	{
+		$pwd = $this->input->get('pwd');
+		echo password_hash($pwd, PASSWORD_DEFAULT);
+	}
+
   public function logout() {
        //unset the logged_in session and redirect to login page
        $this->session->unset_userdata('logged_in');
