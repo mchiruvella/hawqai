@@ -37,4 +37,20 @@ class AuditReportsModel extends CI_Model {
 
     }
 
+    public function getLatestRecordsStatus()
+    {
+      $this->db->select(['id', 'BuildURL']);
+      $this->db->where('ExecutionStatus', 'Running');
+      $query = $this->db->get('executionaudit');
+      $res_array =  $query->result_array();
+      return $res_array;
+
+    }
+    public function updateStatus($record)
+    {
+
+      $this->db->where('id', $record['id']);
+      return $this->db->update('executionaudit', $record);
+    }
+
 }

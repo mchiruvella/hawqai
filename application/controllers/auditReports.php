@@ -17,4 +17,63 @@ class AuditReports extends CI_Controller {
 		$data = array("records" => $result);
   	$this->load->view('audit/index', $data);
   }
+
+	public function getLatestStatus()
+	{
+		$result = $this->report->getLatestRecordsStatus();
+
+		//var_dump($result);
+
+		for($i=0; $i<sizeof($result); $i++){
+			$url = $result[$i]['BuildURL'];
+			if($url){
+					$status = $this->getrecorddetails($url);
+					$result[$i]['ExecutionStatus'] = $status;
+			}
+		}
+
+		for($i=0; $i<sizeof($result); $i++){
+			$result = $this->report->updateStatus($result[$i]);
+		}
+
+
+	}
+
+	function getrecorddetails($url) {
+
+
+		$clientstatus=array();
+		$curl = curl_init();
+
+			curl_setopt_array($curl, array(
+			CURLOPT_URL => $url,
+			CURLOPT_RETURNTRANSFER => true,
+			CURLOPT_ENCODING => '',
+			CURLOPT_MAXREDIRS => 10,
+			CURLOPT_TIMEOUT => 0,
+			CURLOPT_FOLLOWLOCATION => true,
+			CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+			CURLOPT_CUSTOMREQUEST => 'GET',
+			CURLOPT_HTTPHEADER => array(
+				'Authorization: Basic bWNoaXJ1dmVsbGE6MTFjN2MxNzdiNzExZjgxZTVjN2MzZTUzMWY5NjE0ZmJiNg==',
+				'Cookie: JSESSIONID.a3638212=node062785luglgeo1bw0khrqx96us432.node0'
+			),
+			));
+
+			$response = curl_exec($curl);
+
+			curl_close($curl);
+
+			if ($err) {
+				echo "cURL Error #:" . $err;
+			} else {
+				//echo $response;
+			}
+
+		$status = json_decode($response);
+
+		return $status;
+
+	}
+
 }
