@@ -42,6 +42,13 @@
         </div>
     </div>
 
+    <?php
+    if($this->session->flashdata('msg') != ''){
+      $this->session->set_flashdata('msg','');
+    }
+
+     ?>
+
     <!-- Bootstrap core JavaScript-->
     <script src="ui-resources/vendor/jquery/jquery.min.js"></script>
     <script src="ui-resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
